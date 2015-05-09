@@ -51,19 +51,22 @@
 	}
 
 	// requires fetch polyfill
-	function loadJSON(URL, cb) {
+	function loadJSON(URL, onSuccess, onError) {
 		fetch(URL).then(
 			function(response) {
 				if (response.status !== 200) {
-					console.log('Problem loading JSON from ' + URL + '. Status Code: ' + response.status);
+					var errorMsg = 'Problem loading JSON from ' + URL + '. Status Code: ' + response.status;
+					console.log(errorMsg);
+					if (onError) onError(errorMsg);
 					return;
 				}
 
 				// Examine the text in the response
-				response.json().then(cb);
+				response.json().then(onSuccess);
 			}
 		).catch(function(err) {
 			console.log('Fetch Error:', err);
+			if (onError) onError('error fetching data from ' + URL);
 		});
 	}
 

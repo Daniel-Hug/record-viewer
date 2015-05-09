@@ -1,4 +1,4 @@
-/* global $$, DOM, DDS */
+/* global $$, DOM, DDS, modal */
 (function() {
 	'use strict';
 
@@ -8,7 +8,14 @@
 
 		// load records
 		app.dataURL = url;
-		$$.loadJSON(url, app.handleData);
+		$$.loadJSON(url, app.handleData, function(errorMsg) {
+			// show URL loader view instead of loading view
+			app.loadingView.hidden = true;
+			app.dataLoaderView.hidden = false;
+
+			// notify user of error
+			modal('alert', errorMsg, ['Ok']);
+		});
 	}
 
 	function handleData(data) {
