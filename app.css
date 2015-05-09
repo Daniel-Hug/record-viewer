@@ -1,0 +1,25 @@
+#url-loader-form {
+	width: 720px;
+	margin: 10% auto 0;
+}
+
+input {
+	vertical-align: middle;
+}
+
+body > :first-child {
+	margin-top: 0;
+}
+
+fieldset {
+	padding: 1em;
+	margin: 1em 0;
+}
+
+#sort-p select {
+	vertical-align: middle;
+}
+
+#records {
+	list-style: none;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Advanced JSON record viewer</title>
+	<link rel="stylesheet" href="http://daniel-hug.github.io/FatUI/FatUI.css">
+	<link rel="stylesheet" href="app.css">
+</head>
+<body>
+	<div id="view-data-loader" hidden>
+		<form id="url-loader-form">
+			<label class="field-row-top">
+				Enter JSON URL:
+				<input class="full-width" type="url" id="url" value="http://www.jugglingedge.com/feeds/createjson.php?Data=records">
+			</label>
+			<label class="field-row">
+				Use proxy
+				<input type="checkbox" id="proxy">
+			</label>
+			<div class="field-row">
+				<button>Load data</button>
+			</div>
+		</form>
+	</div>
+
+	<div id="view-loading" hidden>
+		<h1>Loading...</h1>
+	</div>
+
+	<div id="view-col-selector" hidden>
+		<form>
+			<h2>Select properties to create columns for</h2>
+			<ul id="col-names"></ul>
+			<button>generate table</button>
+		</form>
+	</div>
+
+	<div id="view-table" hidden>
+		<table>
+			<thead></thead>
+			<tbody></tbody>
+		</table>
+	</div>
+
+
+	<!-- DDS -->
+	<script src="http://daniel-hug.github.io/DDS/bower_components/object-subscribe/obj.js"></script>
+	<script src="http://daniel-hug.github.io/DDS/bower_components/subscribable.js/subscribable.js"></script>
+	<script src="http://daniel-hug.github.io/DDS/DDS.js"></script>
+
+	<!-- DOM-Builder -->
+	<script src="http://daniel-hug.github.io/DOM-Builder/DOM-Builder.js"></script>
+
+	<!-- fetch() polyfill -->
+	<script src="http://cdn.polyfill.io/v1/polyfill.js?features=fetch"></script>
+
+	<!-- custom JS -->
+	<script src="helpers.js"></script>
+	<script src="app.js"></script>
+	<script src="init.js"></script>
+</body>
+</html>
